@@ -1,55 +1,18 @@
 import express from "express";
-
-const getAllUsers = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: "This route is not defined"
-  })
-}
-
-const getUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: "This route is not defined"
-  })
-}
-
-const createUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: "This route is not defined"
-  })
-}
-
-const updateUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: "This route is not defined"
-  })
-}
-
-const deleteUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: "This route is not defined"
-  })
-}
+import { getAllUsers, createUser, getUser, updateUser, deleteUser } from '../controllers/userController.js';
 
 const userRouter = express.Router();
 
 
-
-
-
-userRouter 
+userRouter
   .route('/')
   .get(getAllUsers)
   .post(createUser)
 
-  userRouter 
+userRouter
   .route('/:id')
   .get(getUser)
   .patch(updateUser)
   .delete(deleteUser);
 
-export default userRouter ;
+export default userRouter;
