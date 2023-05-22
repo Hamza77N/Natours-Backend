@@ -1,12 +1,12 @@
 import express from "express";
 
-import { getAllTours, createTour, getTour, updateTour, deleteTour } from '../controllers/tourController.js';
+import { getAllTours, createTour, getTour, updateTour, deleteTour, checkID ,checkBody} from '../controllers/tourController.js';
 
 
 const tourRouter = express.Router();
 
 
-
+tourRouter.param('id', checkID)
 
 
 
@@ -14,7 +14,7 @@ const tourRouter = express.Router();
 tourRouter
   .route('/')
   .get(getAllTours)
-  .post(createTour)
+  .post(checkBody,createTour)
 
 
 tourRouter

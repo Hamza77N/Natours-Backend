@@ -6,13 +6,18 @@ import userRouter from '../starter/routes/userRoutes.js';
 const app = express();
 
 // 1 middleware 
-app.use(morgan("dev"));
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan("dev"));
+
+}
 
 app.use(express.json())
 
+app.use(express.static('./public'))
+
 app.use((req, res, next) => {
   console.log("hello from middleware")
-  next();
+  next()
 })
 
 app.use((req, res, next) => {
@@ -25,7 +30,4 @@ app.use('/api/v1/tours', tourRouter)
 app.use('/api/v1/users', userRouter)
 
 //Start the server
-const PORT = 3000
-app.listen(PORT, () => {
-  console.log(`app running on port ${PORT}`)
-})
+export default app;
