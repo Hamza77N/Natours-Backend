@@ -7,7 +7,7 @@ const app = express();
 
 // 1 middleware 
 if (process.env.NODE_ENV === 'development') {
-  app.use(morgan("dev"));
+   app.use(morgan("dev"));
 
 }
 
@@ -16,13 +16,13 @@ app.use(express.json())
 app.use(express.static('./public'))
 
 app.use((req, res, next) => {
-  console.log("hello from middleware")
-  next()
+   console.log("hello from middleware")
+   next()
 })
 
 app.use((req, res, next) => {
-  req.requestTime = new Date().toISOString();
-  next();
+   req.requestTime = new Date().toISOString();
+   next();
 })
 
 //ROUTES
