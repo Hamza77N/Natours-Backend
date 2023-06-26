@@ -8,7 +8,11 @@ const PORT = process.env.PORT || 8080;
 const DB = process.env.DATA_BASE;
 
 mongoose
-   .connect(DB)
+   .connect(DB, {
+      useNewUrlParser: true,
+      // useCreateIndex: true,
+      // useFindAndModify: false
+   })
    .then(() => {
       app.listen(PORT, () => {
          console.log("Db connected and server running on port: ", PORT);
